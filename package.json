@@ -1,6 +1,6 @@
 {
 	"name": "swish-helper",
-	"version": "0.2.0",
+	"version": "0.3.0",
 	"description": "A npm package for easier implementation of the Swedish payment service Swish",
 	"main": "./dist/index.js",
 	"scripts": {

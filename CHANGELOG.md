@@ -1,3 +1,10 @@
+# [0.3.0](https://github.com/Olle-Nilsson/swish-helper/compare/v0.2.0...v0.3.0) (2026-05-18)
+
+
+### Features
+
+* add passphrase support for encypted private keys ([3c44f57](https://github.com/Olle-Nilsson/swish-helper/commit/3c44f573eaddb062315422081b514ffd7c3a3946))
+
 # [0.2.0](https://github.com/Olle-Nilsson/swish-helper/compare/v0.1.0...v0.2.0) (2026-05-18)
 
 
