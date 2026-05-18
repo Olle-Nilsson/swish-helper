@@ -1,0 +1,30 @@
+{
+	"name": "swish-helper",
+	"version": "0.1.0",
+	"description": "A npm package for easier implementation of the Swedish payment service Swish",
+	"main": "./dist/index.js",
+	"scripts": {
+		"build": "tsc",
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
+		"changelog:init": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Olle-Nilsson/swish-helper.git"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"type": "module",
+	"bugs": {
+		"url": "https://github.com/Olle-Nilsson/swish-helper/issues"
+	},
+	"homepage": "https://github.com/Olle-Nilsson/swish-helper#readme",
+	"devDependencies": {
+		"@types/node": "^25.8.0",
+		"conventional-changelog": "^7.2.0",
+		"conventional-changelog-angular": "^8.3.1",
+		"typescript": "^6.0.3"
+	}
+}
