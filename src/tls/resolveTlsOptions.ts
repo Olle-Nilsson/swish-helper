@@ -48,6 +48,9 @@ export function resolveTlsOptions(tls: TlsConfig): SecureContextOptions {
 			return {
 				cert: normalizePemContent(tls.cert),
 				key: normalizePemContent(tls.key),
+				...(tls.passphrase !== undefined && {
+					passphrase: tls.passphrase,
+				}),
 				...(tls.ca !== undefined && {
 					ca: normalizePemContent(tls.ca),
 				}),
@@ -56,6 +59,9 @@ export function resolveTlsOptions(tls: TlsConfig): SecureContextOptions {
 			return {
 				cert: loadCertFromFile(tls.certPath),
 				key: loadCertFromFile(tls.keyPath),
+				...(tls.passphrase !== undefined && {
+					passphrase: tls.passphrase,
+				}),
 				...(tls.caPath !== undefined && {
 					ca: loadCertFromFile(tls.caPath),
 				}),

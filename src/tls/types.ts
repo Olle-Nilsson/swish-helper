@@ -8,6 +8,8 @@ export type PemTlsRawConfig = {
 	cert: string | Buffer;
 	/** PEM-encoded private key. */
 	key: string | Buffer;
+	/** Passphrase to decrypt the private key, if encrypted. */
+	passphrase?: string;
 	/** PEM-encoded CA certificate. Optional — omit to use system/platform trust store. */
 	ca?: string | Buffer;
 };
@@ -19,6 +21,8 @@ export type PemTlsPathConfig = {
 	certPath: string;
 	/** Path to the PEM-encoded private key file. */
 	keyPath: string;
+	/** Passphrase to decrypt the private key, if encrypted. */
+	passphrase?: string;
 	/** Path to the PEM-encoded CA certificate file. Optional. */
 	caPath?: string;
 };
