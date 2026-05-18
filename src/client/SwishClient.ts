@@ -1,10 +1,24 @@
 import type { SecureContextOptions } from 'tls';
 
 import { SWISH_BASE_URLS, buildEndpointUrl } from './endpoints.ts';
-import { transport, type RequestOptions } from './transport.ts';
+import {
+	transport,
+	type RequestOptions,
+	type TransportResponse,
+} from './transport.ts';
 import { resolveTlsOptions } from '../tls/resolveTlsOptions.ts';
 import { validateTlsConfig } from '../tls/validateTlsConfig.ts';
 import type { TlsConfig, SwishEnvironment } from '../tls/types.ts';
+import {
+	createECommercePayment,
+	createMCommercePayment,
+} from '../payments/paymentRequest.ts';
+import type {
+	ECommercePaymentRequest,
+	ECommercePaymentResult,
+	MCommercePaymentRequest,
+	MCommercePaymentResult,
+} from '../payments/paymentRequest.ts';
 
 /** Options for configuring a {@link SwishClient}. */
 export type SwishClientOptions = {
@@ -61,11 +75,40 @@ export class SwishClient {
 	 * Makes an authenticated HTTPS request to the Swish API.
 	 * @param options - Request options including method, path, body, and headers.
 	 * @param url - The full endpoint URL (use {@link endpointUrl} to build it).
-	 * @returns The parsed response body, or `null` for empty responses.
+	 * @returns The parsed response body and raw response headers.
 	 * @throws {SwishApiError} If the server returns a non-2xx status code.
 	 */
-	request<T>(options: RequestOptions, url: string): Promise<T | null> {
+	request<T>(
+		options: RequestOptions,
+		url: string,
+	): Promise<TransportResponse<T>> {
 		return transport<T>(this.tlsOptions, options.method, url, options.body);
+	}
+
+	/**
+	 * Creates an e-commerce payment request.
+	 * @param request - The payment request options, including the payer's Swish number.
+	 * @returns The instruction ID and the `location` URL of the created resource.
+	 * @throws {Error} If `payeeAlias` is not set on the client or in the request.
+	 * @throws {SwishApiError} If the Swish API returns a non-2xx response.
+	 */
+	createECommercePayment(
+		request: ECommercePaymentRequest,
+	): Promise<ECommercePaymentResult> {
+		return createECommercePayment(this, request);
+	}
+
+	/**
+	 * Creates an m-commerce payment request.
+	 * @param request - The payment request options.
+	 * @returns The instruction ID and the `paymentRequestToken` to launch the Swish app.
+	 * @throws {Error} If `payeeAlias` is not set on the client or in the request.
+	 * @throws {SwishApiError} If the Swish API returns a non-2xx response.
+	 */
+	createMCommercePayment(
+		request: MCommercePaymentRequest,
+	): Promise<MCommercePaymentResult> {
+		return createMCommercePayment(this, request);
 	}
 
 	/**
