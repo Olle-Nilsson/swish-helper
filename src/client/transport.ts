@@ -1,7 +1,16 @@
 import { request as httpsRequest } from 'https';
+import type { IncomingHttpHeaders } from 'http';
 import type { SecureContextOptions } from 'tls';
 
 import { SwishApiError } from '../errors/errors.ts';
+
+/** The full response from a Swish API request, including headers and parsed body. */
+export type TransportResponse<T> = {
+	/** Parsed response body, or `null` for empty responses (e.g. 201 No Content). */
+	body: T | null;
+	/** Raw response headers from the Swish API. */
+	headers: IncomingHttpHeaders;
+};
 
 /** HTTP methods supported by the Swish API. */
 export type HttpMethod = 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE';
@@ -25,7 +34,7 @@ export type RequestOptions = {
  * @param method - The HTTP method.
  * @param url - The full endpoint URL.
  * @param body - Optional request body. Will be serialised to JSON.
- * @returns The parsed JSON response body, or `null` for empty responses (e.g. 201 with no body).
+ * @returns The parsed response body and raw response headers.
  * @throws {SwishApiError} If the server returns a non-2xx status code.
  */
 export function transport<T>(
@@ -33,7 +42,7 @@ export function transport<T>(
 	method: HttpMethod,
 	url: string,
 	body?: unknown,
-): Promise<T | null> {
+): Promise<TransportResponse<T>> {
 	return new Promise((resolve, reject) => {
 		const payload = body !== undefined ? JSON.stringify(body) : undefined;
 
@@ -75,12 +84,15 @@ export function transport<T>(
 					}
 
 					if (!raw) {
-						resolve(null);
+						resolve({ body: null, headers: res.headers });
 						return;
 					}
 
 					try {
-						resolve(JSON.parse(raw) as T);
+						resolve({
+							body: JSON.parse(raw) as T,
+							headers: res.headers,
+						});
 					} catch {
 						reject(
 							new Error(
