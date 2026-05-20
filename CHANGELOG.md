@@ -1,3 +1,10 @@
+# [0.4.0](https://github.com/Olle-Nilsson/swish-helper/compare/v0.3.0...v0.4.0) (2026-05-20)
+
+
+### Features
+
+* add prepare scrit for automatic build on install via github ([2824deb](https://github.com/Olle-Nilsson/swish-helper/commit/2824deb7721c7e97497998e60704f2225d2048c5))
+
 # [0.3.0](https://github.com/Olle-Nilsson/swish-helper/compare/v0.2.0...v0.3.0) (2026-05-18)
 
 
