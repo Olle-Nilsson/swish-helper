@@ -21,8 +21,6 @@ Or a specific version tag:
 npm install github:Olle-Nilsson/swish-helper#v0.3.0
 ```
 
-The package will be built automatically during installation.
-
 ## Usage
 
 ### Create a client with a PFX certificate
