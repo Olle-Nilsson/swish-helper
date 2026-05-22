@@ -2,25 +2,55 @@
 	"name": "swish-helper",
 	"version": "0.4.0",
 	"description": "A npm package for easier implementation of the Swedish payment service Swish",
+	"keywords": [],
+	"homepage": "https://github.com/Olle-Nilsson/swish-helper#readme",
+	"bugs": {
+		"url": "https://github.com/Olle-Nilsson/swish-helper/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Olle-Nilsson/swish-helper.git"
+	},
+	"license": "MIT",
+	"author": "Olle Nilsson",
+	"type": "module",
 	"main": "./dist/index.js",
+	"types": "./dist/index.d.ts",
 	"scripts": {
 		"build": "tsc",
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
 		"changelog:init": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0"
 	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/Olle-Nilsson/swish-helper.git"
+	"dependencies": {
+		"array-ify": "^1.0.0",
+		"compare-func": "^2.0.0",
+		"conventional-changelog-preset-loader": "^5.0.0",
+		"conventional-changelog-writer": "^8.4.0",
+		"conventional-commits-filter": "^5.0.0",
+		"conventional-commits-parser": "^6.4.0",
+		"dot-prop": "^5.3.0",
+		"fd-package-json": "^2.0.0",
+		"handlebars": "^4.7.9",
+		"hosted-git-info": "^8.1.0",
+		"is-obj": "^2.0.0",
+		"lru-cache": "^10.4.3",
+		"meow": "^13.2.0",
+		"minimist": "^1.2.8",
+		"neo-async": "^2.6.2",
+		"normalize-package-data": "^7.0.1",
+		"semver": "^7.8.0",
+		"source-map": "^0.6.1",
+		"spdx-correct": "^3.2.0",
+		"spdx-exceptions": "^2.5.0",
+		"spdx-expression-parse": "^3.0.1",
+		"spdx-license-ids": "^3.0.23",
+		"uglify-js": "^3.19.3",
+		"undici-types": "^7.24.6",
+		"validate-npm-package-license": "^3.0.4",
+		"walk-up-path": "^4.0.0",
+		"wordwrap": "^1.0.0"
 	},
-	"keywords": [],
-	"author": "",
-	"license": "MIT",
-	"type": "module",
-	"bugs": {
-		"url": "https://github.com/Olle-Nilsson/swish-helper/issues"
-	},
-	"homepage": "https://github.com/Olle-Nilsson/swish-helper#readme",
 	"devDependencies": {
 		"@types/node": "^25.8.0",
 		"conventional-changelog": "^7.2.0",
