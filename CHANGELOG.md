@@ -1,3 +1,10 @@
+## [0.4.1](https://github.com/Olle-Nilsson/swish-helper/compare/v0.4.0...v0.4.1) (2026-05-23)
+
+
+### Bug Fixes
+
+* exclude source files from published package ([2dd8449](https://github.com/Olle-Nilsson/swish-helper/commit/2dd8449dbbef1eed1c19e6b5c2515b7eb7b62e87))
+
 # [0.4.0](https://github.com/Olle-Nilsson/swish-helper/compare/v0.3.0...v0.4.0) (2026-05-20)
 
 
